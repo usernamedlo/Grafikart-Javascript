@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fréquence</title>
+</head>
+<body>
+
+    <script>
+
+    const getWords = (phrase) => {
+        return  phrase.toLocaleLowerCase().replaceAll(regex,"").split(" ");
+    }
+
+    const getFrequencies = (phrase) => {
+        for (const word of getWords(phrase)) {
+            if(word.length >= 4){
+                if (frequencies[word]) {
+                    frequencies[word]++;
+                } else {
+                    frequencies[word] = 1;
+                }
+            }
+        }
+        return frequencies;
+    }
+
+    const sortFrequencies = (frequencies) => {
+        for (let k in frequencies) {
+            frequenciesArray.push({word: k, count: frequencies[k]})
+        }
+        return frequenciesArray.sort((a, b) => b.count - a.count);
+    }
+
+    const regex = /[,.?!]/gm;
+    const phrase = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum`;
+    const frequencies = {};
+    const frequenciesArray = []
+    console.log(sortFrequencies(getFrequencies(phrase)));
+    console.log(`Les mots les plus fréquents sont "${frequenciesArray[0].word}" (${frequenciesArray[0].count}), "${frequenciesArray[1].word}" (${frequenciesArray[1].count}), "${frequenciesArray[2].word}" (${frequenciesArray[2].count})`);
+
+
+
+    </script>
+
+
+</body>
+</html>
