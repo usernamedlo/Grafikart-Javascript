@@ -18,7 +18,41 @@
             this.pages = pages;
         }
 
-        
+        get page() {
+            return this.#page;
+        }
+
+        nextPage() {
+            if (this.#page < this.pages) {
+                this.#page++;
+            }
+        }
+
+        close() {
+            this.#page = 1;
+        }
+
+    }
+
+    class Library {
+
+        #books = [];
+
+        addBook(book) {
+            this.#books.push(book);
+        }
+
+        addBooks(books) {
+            for (let book of books) {
+                this.addBook(book);
+            }
+        }
+
+        findBooksByLetter(letter) {
+            return this.#books.filter((book) => book.title[0].toLowerCase() === letter.toLowerCase())
+        }
+
+
     }
 
     const b = new Book('Seigneur des anneaux', 200);
