@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COUNTER</title>
+</head>
+<body>
+    <script>
+        let nbrCounter = 0;
+
+        function counter(i) {
+            const timer = setInterval(function() {
+            nbrCounter++;
+            console.log(nbrCounter);
+            if (i == nbrCounter) {
+                clearInterval(timer);
+            }
+        }, 1000);}
+
+        function deduct(nbrDeduct) {
+            console.log(nbrDeduct);
+            if (nbrDeduct === 0) {
+                return;
+            }
+            setTimeout(function() {
+                deduct(nbrDeduct - 1);
+            }, 1000);
+        }
+
+        counter(3);
+        deduct(3)
+
+
+
+
+    </script>
+</body>
+</html>
